@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="th" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOUR LITTLE UNIVERSES — Happy Birthday พี่จ้าย</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Prompt, Kanit, Cinzel, Dancing Script -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Dancing+Script:wght@600;700&family=Kanit:wght@300;400;500;600&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Prompt', 'sans-serif'],
+            display: ['Cinzel', 'serif'],
+            handwriting: ['Dancing Script', 'cursive'],
+            thaiHeader: ['Kanit', 'sans-serif']
+          },
+          colors: {
+            cosmic: {
+              900: '#030712',
+              800: '#0B0F19',
+              700: '#111827',
+              accent: '#38BDF8',
+              gold: '#F59E0B'
+            }
+          },
+          animation: {
+            'float-slow': 'float 6s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+            'twinkle': 'twinkle 2s ease-in-out infinite alternate',
+            'spin-slow': 'spin 20s linear infinite'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' }
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.4', filter: 'drop-shadow(0 0 15px rgba(245, 158, 11, 0.4))' },
+              '50%': { opacity: '0.9', filter: 'drop-shadow(0 0 35px rgba(245, 158, 11, 0.8))' }
+            },
+            twinkle: {
+              '0%': { opacity: '0.3', transform: 'scale(0.95)' },
+              '100%': { opacity: '1', transform: 'scale(1.15)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Prompt', sans-serif;
+      background-color: #030712;
+      color: #F9FAFB;
+      overflow-x: hidden;
+    }
+
+    .glass-card {
+      background: rgba(17, 24, 39, 0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-card-hover {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card-hover:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(245, 158, 11, 0.4);
+      box-shadow: 0 20px 40px -15px rgba(245, 158, 11, 0.25);
+    }
+
+    .cosmic-text-gradient {
+      background: linear-gradient(135deg, #FFF 0%, #F59E0B 50%, #EC4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .letter-paper {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8), 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #030712;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1F2937;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D97706;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen text-slate-100 selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- Global Ambient Cosmic Background Canvas -->
+  <canvas id="universe-canvas" class="fixed inset-0 pointer-events-auto z-0"></canvas>
+
+  <!-- Global Audio Control Button -->
+  <div class="fixed top-5 right-5 z-50">
+    <button id="audio-toggle-btn" onclick="toggleAudio()" class="p-3 rounded-full glass-card hover:border-amber-400 text-amber-300 transition-all shadow-lg flex items-center justify-center space-x-2 group">
+      <i data-lucide="music" class="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform"></i>
+      <span id="audio-label" class="text-xs font-medium pr-1 text-slate-300 hidden sm:inline">เล่นเพลงบรรยากาศ</span>
+    </button>
+  </div>
+
+  <!-- Main Container -->
+  <main class="relative z-10 min-h-screen flex flex-col justify-between">
+
+    <!-- SECTION 1: WELCOME TO OUR UNIVERSE -->
+    <section id="screen-welcome" class="min-h-screen flex flex-col items-center justify-center text-center px-4 transition-all duration-1000 ease-in-out">
+      <div class="max-w-4xl mx-auto space-y-8 animate-float-slow">
+        
+        <!-- Header Sparkle -->
+        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-sm tracking-widest uppercase">
+          <i data-lucide="sparkles" class="w-4 h-4 animate-spin-slow"></i>
+          <span>Single Page Interactive Celebration</span>
+          <i data-lucide="sparkles" class="w-4 h-4 animate-spin-slow"></i>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-wider leading-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-100 drop-shadow-[0_0_25px_rgba(245,158,11,0.4)]">
+          FOUR PEOPLE.<br/>
+          FOUR STORIES.<br/>
+          <span class="text-amber-300">INFINITE WISHES. ✦</span>
+        </h1>
+
+        <p class="text-lg sm:text-2xl text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
+          วันนี้เรามีคำอวยพรพิเศษให้กับ <span class="text-amber-300 font-medium underline underline-offset-8 decoration-amber-500/50">พี่จ้าย</span>
+          <br/><span class="text-slate-400 text-base mt-2 block">ลองเลือกดูสิว่าอยากเปิดจักรวาลของใครก่อน</span>
+        </p>
+
+        <!-- Enter Button -->
+        <div class="pt-6">
+          <button onclick="enterUniverse()" class="relative group px-10 py-4 rounded-full font-semibold text-lg overflow-hidden bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 text-slate-950 shadow-[0_0_30px_rgba(245,158,11,0.5)] hover:shadow-[0_0_50px_rgba(245,158,11,0.8)] hover:scale-105 active:scale-95 transition-all duration-300">
+            <span class="relative z-10 flex items-center space-x-3 tracking-widest font-thaiHeader">
+              <span>ENTER THE UNIVERSE</span>
+              <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+            </span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: CHOOSE YOUR STAR -->
+    <section id="screen-stars" class="hidden min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center transition-all duration-1000">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-wide text-amber-200">
+          WHO ARE WE CELEBRATING TODAY?
+        </h2>
+        <p class="text-slate-400 text-base sm:text-lg">
+          เลือกการ์ดดวงดาวเพื่อเปิดของขวัญและคำอวยพรจากแต่ละจักรวาล
+        </p>
+      </div>
+
+      <!-- 4 Star Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl w-full mx-auto">
+        
+        <!-- STAR 01 CARD: ซินหยาง -->
+        <div class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group border-t-2 border-t-sky-400/50">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-sky-500/20 rounded-full blur-2xl group-hover:bg-sky-500/40 transition-all"></div>
+          
+          <div class="space-y-4 relative z-10">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono tracking-widest text-sky-400 px-3 py-1 rounded-full bg-sky-950/60 border border-sky-500/30">✦ STAR 01</span>
+              <span class="text-2xl">💫</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold font-thaiHeader text-slate-100 group-hover:text-sky-300 transition-colors">
+              ซินหยาง
+            </h3>
+            
+            <p class="text-xs text-slate-400 leading-relaxed font-light">
+              A little universe made just for you.
+            </p>
+            
+            <div class="py-3 border-y border-slate-800/80 text-xs text-slate-300 space-y-1">
+              <p><span class="text-slate-500">ธีม:</span> จักรวาลดาวตก</p>
+              <p><span class="text-slate-500">สถานะ:</span> พร้อมเปิดอ่านคำอวยพร</p>
+            </div>
+          </div>
+
+          <div class="pt-6 relative z-10">
+            <button onclick="openPersonalUniverse(0)" class="w-full py-3 px-4 rounded-xl font-medium bg-sky-500/20 hover:bg-sky-500/40 border border-sky-400/40 text-sky-200 hover:text-white transition-all flex items-center justify-center space-x-2 group/btn">
+              <span>OPEN BIRTHDAY</span>
+              <i data-lucide="sparkle" class="w-4 h-4 group-hover/btn:rotate-45 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- STAR 02 CARD: ตงหยาง -->
+        <div class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group border-t-2 border-t-emerald-400/50">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/20 rounded-full blur-2xl group-hover:bg-emerald-500/40 transition-all"></div>
+          
+          <div class="space-y-4 relative z-10">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono tracking-widest text-emerald-400 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30">✦ STAR 02</span>
+              <span class="text-2xl">🌸</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold font-thaiHeader text-slate-100 group-hover:text-emerald-300 transition-colors">
+              ตงหยาง
+            </h3>
+            
+            <p class="text-xs text-slate-400 leading-relaxed font-light">
+              Your own story begins here.
+            </p>
+            
+            <div class="py-3 border-y border-slate-800/80 text-xs text-slate-300 space-y-1">
+              <p><span class="text-slate-500">ธีม:</span> สวนดอกไม้เรืองแสง</p>
+              <p><span class="text-slate-500">สถานะ:</span> พร้อมเปิดอ่านคำอวยพร</p>
+            </div>
+          </div>
+
+          <div class="pt-6 relative z-10">
+            <button onclick="openPersonalUniverse(1)" class="w-full py-3 px-4 rounded-xl font-medium bg-emerald-500/20 hover:bg-emerald-500/40 border border-emerald-400/40 text-emerald-200 hover:text-white transition-all flex items-center justify-center space-x-2 group/btn">
+              <span>OPEN BIRTHDAY</span>
+              <i data-lucide="flower-2" class="w-4 h-4 group-hover/btn:rotate-45 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- STAR 03 CARD: หมวยหมวย -->
+        <div class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group border-t-2 border-t-purple-400/50">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl group-hover:bg-purple-500/40 transition-all"></div>
+          
+          <div class="space-y-4 relative z-10">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono tracking-widest text-purple-400 px-3 py-1 rounded-full bg-purple-950/60 border border-purple-500/30">✦ STAR 03</span>
+              <span class="text-2xl">✨</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold font-thaiHeader text-slate-100 group-hover:text-purple-300 transition-colors">
+              หมวยหมวย
+            </h3>
+            
+            <p class="text-xs text-slate-400 leading-relaxed font-light">
+              A special wish is waiting.
+            </p>
+            
+            <div class="py-3 border-y border-slate-800/80 text-xs text-slate-300 space-y-1">
+              <p><span class="text-slate-500">ธีม:</span> ห้องดูดาวและข้อความลับ</p>
+              <p><span class="text-slate-500">สถานะ:</span> พร้อมเปิดอ่านคำอวยพร</p>
+            </div>
+          </div>
+
+          <div class="pt-6 relative z-10">
+            <button onclick="openPersonalUniverse(2)" class="w-full py-3 px-4 rounded-xl font-medium bg-purple-500/20 hover:bg-purple-500/40 border border-purple-400/40 text-purple-200 hover:text-white transition-all flex items-center justify-center space-x-2 group/btn">
+              <span>OPEN BIRTHDAY</span>
+              <i data-lucide="stars" class="w-4 h-4 group-hover/btn:scale-110 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- STAR 04 CARD: เครปคิว -->
+        <div class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group border-t-2 border-t-amber-400/50">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-amber-500/20 rounded-full blur-2xl group-hover:bg-amber-500/40 transition-all"></div>
+          
+          <div class="space-y-4 relative z-10">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono tracking-widest text-amber-400 px-3 py-1 rounded-full bg-amber-950/60 border border-amber-500/30">✦ STAR 04</span>
+              <span class="text-2xl">🎂</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold font-thaiHeader text-slate-100 group-hover:text-amber-300 transition-colors">
+              เครปคิว
+            </h3>
+            
+            <p class="text-xs text-slate-400 leading-relaxed font-light">
+              Something beautiful awaits you.
+            </p>
+            
+            <div class="py-3 border-y border-slate-800/80 text-xs text-slate-300 space-y-1">
+              <p><span class="text-slate-500">ธีม:</span> เป่าเค้กวันเกิดและพลุแสงทอง</p>
+              <p><span class="text-slate-500">สถานะ:</span> พร้อมเปิดอ่านคำอวยพร</p>
+            </div>
+          </div>
+
+          <div class="pt-6 relative z-10">
+            <button onclick="openPersonalUniverse(3)" class="w-full py-3 px-4 rounded-xl font-medium bg-amber-500/20 hover:bg-amber-500/40 border border-amber-400/40 text-amber-200 hover:text-white transition-all flex items-center justify-center space-x-2 group/btn">
+              <span>OPEN BIRTHDAY</span>
+              <i data-lucide="cake" class="w-4 h-4 group-hover/btn:rotate-12 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: PERSONAL BIRTHDAY EXPERIENCE -->
+    <section id="screen-personal" class="hidden min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full space-y-16 transition-all duration-700">
+      
+      <!-- Floating Navigation Bar -->
+      <div class="sticky top-6 z-40 flex items-center justify-between glass-card px-6 py-3 rounded-full border border-slate-700/60 shadow-xl">
+        <button onclick="backToStars()" class="flex items-center space-x-2 text-sm text-slate-300 hover:text-amber-300 transition-colors">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          <span class="font-medium">BACK TO ALL STARS</span>
+        </button>
+        <span id="p-badge" class="text-xs tracking-wider font-mono px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300">
+          UNIVERSE 01
+        </span>
+      </div>
+
+      <!-- HERO SECTION -->
+      <div class="text-center space-y-6 pt-4">
+        <div class="inline-block px-4 py-1 rounded-full glass-card text-xs tracking-widest text-amber-300 uppercase">
+          ✦ THIS UNIVERSE BELONGS TO ✦
+        </div>
+        
+        <h2 id="p-hero-title" class="text-4xl sm:text-6xl font-extrabold font-thaiHeader tracking-wide cosmic-text-gradient">
+          HAPPY BIRTHDAY, พี่จ้าย ♡
+        </h2>
+        
+        <p id="p-hero-subtitle" class="text-lg sm:text-xl text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
+          <!-- Populated dynamically -->
+        </p>
+
+        <!-- Dynamic Visual Badge -->
+        <div class="pt-2 flex items-center justify-center space-x-4">
+          <div id="p-theme-badge" class="px-4 py-2 rounded-xl glass-card text-sm text-slate-300 flex items-center space-x-2">
+            <span id="p-theme-icon">✨</span>
+            <span id="p-theme-text">ธีมจักรวาลดาวตก</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERSONAL LETTER SECTION -->
+      <div class="space-y-6">
+        <div class="text-center space-y-2">
+          <h3 class="font-display text-2xl sm:text-3xl font-bold text-amber-200 flex items-center justify-center space-x-3">
+            <i data-lucide="mail-open" class="w-6 h-6 text-amber-400"></i>
+            <span>A LETTER WRITTEN JUST FOR YOU</span>
+          </h3>
+          <p id="p-sender-name" class="text-sm text-amber-400/80 font-medium">
+            จาก: ซินหยาง
+          </p>
+        </div>
+
+        <div class="letter-paper p-6 sm:p-10 rounded-2xl relative overflow-hidden">
+          <!-- Decorative Top Left Stamp -->
+          <div class="absolute top-4 right-4 text-xs font-mono text-slate-600 uppercase tracking-widest border border-slate-800 px-3 py-1 rounded">
+            SPECIAL DELIVERY
+          </div>
+
+          <!-- Typewriter Output Box -->
+          <div id="p-letter-content" class="text-base sm:text-lg leading-relaxed text-slate-200 font-light whitespace-pre-line min-h-[160px]">
+            <!-- Content will be typed out line by line -->
+          </div>
+
+          <!-- Typewriter Control Bar -->
+          <div class="mt-8 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span id="p-letter-status" class="flex items-center space-x-2">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              <span>กำลังอ่านจดหมาย...</span>
+            </span>
+            <button onclick="skipTypewriter()" class="px-3 py-1 rounded glass-card hover:text-amber-300 transition-colors">
+              แสดงข้อความทั้งหมด
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERSONAL BIRTHDAY SURPRISE SECTION -->
+      <div class="space-y-6 pt-6">
+        <div class="text-center space-y-2">
+          <div class="inline-block px-3 py-1 rounded-full bg-amber-400/10 text-amber-300 text-xs font-medium">
+            INTERACTIVE EXPERIENCE
+          </div>
+          <h3 id="p-surprise-title" class="font-display text-2xl sm:text-3xl font-bold text-slate-100">
+            จักรวาลดาวตกของพี่จ้าย
+          </h3>
+          <p id="p-surprise-hint" class="text-xs sm:text-sm text-slate-400">
+            คลิกหรือแตะที่พื้นที่เพื่อเปิดเอฟเฟกต์พิเศษเฉพาะตัว
+          </p>
+        </div>
+
+        <!-- Interactive Surprise Widget Canvas Box -->
+        <div class="relative w-full rounded-2xl glass-card overflow-hidden border border-amber-500/20 p-2 sm:p-4 min-h-[380px] flex flex-col items-center justify-center">
+          
+          <!-- Interactive Playground Canvas -->
+          <canvas id="surprise-canvas" class="w-full h-[360px] rounded-xl cursor-pointer bg-slate-950/80"></canvas>
+          
+          <!-- Special Overlay UI for Candle Blowing / Surprise Triggering -->
+          <div id="surprise-overlay" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center space-x-3 pointer-events-auto z-20">
+            <button id="surprise-action-btn" onclick="triggerSurpriseAction()" class="px-6 py-2.5 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center space-x-2">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+              <span id="surprise-btn-text">จุดดาวตกเพิ่ม</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Closing Message Box -->
+      <div class="text-center py-10 space-y-4 border-t border-slate-800">
+        <p class="font-display text-xl sm:text-2xl text-amber-300 tracking-wider">
+          MAY YOUR NEXT CHAPTER BE BEAUTIFUL & INFINITE ✦
+        </p>
+        <p class="text-xs text-slate-500">
+          「 FOUR LITTLE UNIVERSES 」 — Created with love for พี่จ้าย
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+    /*
+     * FOUR LITTLE UNIVERSES - CONFIGURATION & DATA MODEL
+     */
+    const PERSONS_DATA = [
+      {
+        id: 1,
+        sender: "ซินหยาง",
+        recipient: "พี่จ้าย",
+        badge: "STAR 01",
+        colorTheme: "#38BDF8", // Sky Blue
+        tagline: "A little universe made just for you.",
+        heroSubtitle: "ถึงพี่จ้าย... เรื่องราว 5-6 ปีที่ร่วมเดินทางกันมา ถูกเขียนไว้ในกลุ่มดาวตกนี้แล้ว",
+        themeName: "จักรวาลดาวตก",
+        themeIcon: "💫",
+        letter: `ถึง พี่จ้าย ,
+
+สุขสันต์วันเกิดเจี่ยเจี้ย ปีนี้ปีที่เท่าไหร่แล้วละ 5-6ปีแล้วม้าง อยู่ร่วมเป็นร่วมตายกันมา เกือบตายหลายปี เอาเรื่องนะ ปีนี้โตกันขึ้นเยอะมาก ตั้งแต่ปีแรกถึงปีนี้รู้จักพี่มาไม่เคยไม่มีวันไหนมไม่นับถือในตัวพี่เลย ปีนี้ให้พี่มีความสุขมาก ๆ ตรงไหนไม่ดีก็ออกมาจากตรงนั้น แ่อย่าออกจากตรงนี้นะ ขอแป้บนึง555555555 ขอให้กลุ่มประสบความสำเร็จแบบทที่พี่หวัง พี่เก่งมากๆ หันหลังมามีหนูเสมอ`,
+        surpriseTitle: "จักรวาลดาวตกแห่งความปรารถนา",
+        surpriseHint: "คลิกบนท้องฟ้าเพื่อปล่อยดาวตกและขอพรให้ทุกความฝันของพี่จ้ายเป็นจริง",
+        btnText: "จุดดาวตกเพิ่ม 💫",
+        type: "shooting-stars"
+      },
+      {
+        id: 2,
+        sender: "ตงหยาง",
+        recipient: "พี่จ้าย kub eiei",
+        badge: "STAR 02",
+        colorTheme: "#34D399", // Emerald Green
+        tagline: "Your own story begins here.",
+        heroSubtitle: "บ้านและความอบอุ่นที่ผูกพันกันมา... เบ่งบานเหมือนสวนดอกไม้เรืองแสง",
+        themeName: "สวนดอกไม้เรืองแสง",
+        themeIcon: "🌸",
+        letter: `ถึงพี่จ้าย ,
+
+สุขสันต์วันเกิดครับพี่จ้าย หยางไม่มีคำอวยพรอะไรมาก แต่ขอให้พี่จ้ายมีความสุขเยอะ ๆ ยิ้มบ่อย ๆ ไม่รู้ว่าหยางอยู่กับพี่มากี่ปีแล้ว แต่เป็นการอยู่ที่ผูกพันธ์กันมาก เห็นเป็นครอบครัวเดียวกันแล้วตอนนี้ พี่จ้ายสอนหยางอะไรหลาย ๆ อย่าง ช่วยสอนงาน สร้างสีสันกับน้อง ๆ ได้ดีมาก ไม่เคยมีวันไหนที่หยางเสียใจเลยที่ได้ทำงานร่วมกับพวกพี่ อาจจะมีดุมีว่ากันบ้างก็ไม่เป็นไร ถือว่าสีสันชีวิตแล้วกัน แต่ยินดีมากที่ได้เจอพี่จ้าย สุขสันต์วันเกิดอีกรอบครับ . . .`,
+        surpriseTitle: "สวนดอกไม้เรืองแสงแห่งครอบครัว",
+        surpriseHint: "แตะหรือคลิกบนพื้นดินเพื่อปลูกดอกไม้เรืองแสงและส่งต่อความสุข",
+        btnText: "ปลูกดอกไม้เรืองแสง 🌸",
+        type: "glowing-garden"
+      },
+      {
+        id: 3,
+        sender: "หมวยหมวย",
+        recipient: "พี่จ้าย",
+        badge: "STAR 03",
+        colorTheme: "#C084FC", // Purple/Amethyst
+        tagline: "A special wish is waiting.",
+        heroSubtitle: "ความรักและความเคารพจากหมวยหมวย ส่องประกายอยู่ในห้องดูดาวแห่งนี้",
+        themeName: "ห้องดูดาวพร้อมข้อความลับ",
+        themeIcon: "✨",
+        letter: `sswg kaaa มีความสุขมากมากค่ะพี่จ้าย ตั้งแต่อยู่กับพี่จ้ายกับหมิงโจวมาไม่มีวันไหนไม่นับถือพี่จ้ายเลยค่ะ ขอให้มีแต่คนดีดีเข้ามาค่ะรักพี่จ้ายที่เป็นพี่จ้าย มีแต่คนร้ากเยอะเยอะค่ะ`,
+        surpriseTitle: "ห้องดูดาวและข้อความลับความทรงจำ",
+        surpriseHint: "ลากหรือคลิกเชื่อมต่อจุดดาวเพื่อเปิดเผยข้อความลับที่ซ่อนอยู่ในกลุ่มดาว",
+        btnText: "จุดกลุ่มดาวความลับ ✨",
+        type: "constellation-room"
+      },
+      {
+        id: 4,
+        sender: "เครปคิว",
+        recipient: "พี่จ้าย na",
+        badge: "STAR 04",
+        colorTheme: "#F59E0B", // Amber Gold
+        tagline: "Something beautiful awaits you.",
+        heroSubtitle: "ขอบคุณพี่จ้ายที่สู้มาด้วยกันเสมอ วันนี้ถึงเวลาอธิษฐานและเป่าเค้กวันเกิดแล้ว!",
+        themeName: "เค้กวันเกิดและพลุแสงทอง",
+        themeIcon: "🎂",
+        letter: `สุขสันต์วันเกิด na ดีใจที่ได้เจอ ขอให้พี่ได้เข้ามหาลัยอย่างที่หวังอย่าหักโหมอ่านหนังสือนะ มีความสุขในทุกๆวัน คิวก้อยุ่กับพี่กับพี่ซินมานาน ตั้งแต่เข้ากลุ่มมาได้รู้เรื่องจากพี่เล่าบ้างเจอบ้างจนก้แอบนึกว่าเรื่องบางเรื่องพวกพี่ผ่านมันมาได้ไง พี่เก่งกันจริงๆ ตอนแรกคิวก้ไม่ได้มีบทบาทไรขนาดนั้นพอเราเหลือกันอยุ่แค่นั้น พี่ก้ยังสู้มาจนมาเป้นวันนี้ได้เป้นคิว คิวหมดไฟไปละ ตอนเจอเรื่องพี่จัดการให้ตลอด ขอบคุณพวกพี่มาก รักเสมอถึงไม่ค่อยคุยกันก้เถอะ`,
+        surpriseTitle: "เค้กวันเกิดและพลุแสงทองเฉลิมฉลอง",
+        surpriseHint: "คลิกที่เปลวไฟเทียนบนเค้กเพื่อเป่าดับเทียนแล้วรับชมพลุแสงทองฉลองวันเกิด!",
+        btnText: "เป่าเทียนวันเกิด 🎂",
+        type: "birthday-cake"
+      }
+    ];
+
+    // Global State
+    let currentUniverseIndex = 0;
+    let typewriterTimer = null;
+    let currentTypedText = "";
+    let isAudioPlaying = false;
+    let audioSynthCtx = null;
+    let surpriseAnimationId = null;
+
+    // MAIN BACKGROUND CANVAS ENGINE
+    const bgCanvas = document.getElementById('universe-canvas');
+    const bgCtx = bgCanvas.getContext('2d');
+    let bgStars = [];
+
+    function resizeBgCanvas() {
+      bgCanvas.width = window.innerWidth;
+      bgCanvas.height = window.innerHeight;
+      initBgStars();
+    }
+
+    function initBgStars() {
+      bgStars = [];
+      const count = Math.floor((bgCanvas.width * bgCanvas.height) / 3000);
+      for (let i = 0; i < count; i++) {
+        bgStars.push({
+          x: Math.random() * bgCanvas.width,
+          y: Math.random() * bgCanvas.height,
+          size: Math.random() * 2 + 0.5,
+          alpha: Math.random(),
+          speed: Math.random() * 0.015 + 0.005,
+          color: Math.random() > 0.3 ? '#FFFFFF' : (Math.random() > 0.5 ? '#F59E0B' : '#38BDF8')
+        });
+      }
+    }
+
+    function renderBg() {
+      bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+      
+      // Radial glow gradient background
+      const gradient = bgCtx.createRadialGradient(
+        bgCanvas.width / 2, bgCanvas.height / 2, 50,
+        bgCanvas.width / 2, bgCanvas.height / 2, Math.max(bgCanvas.width, bgCanvas.height)
+      );
+      gradient.addColorStop(0, '#0B0F19');
+      gradient.addColorStop(0.5, '#050811');
+      gradient.addColorStop(1, '#02040A');
+      bgCtx.fillStyle = gradient;
+      bgCtx.fillRect(0, 0, bgCanvas.width, bgCanvas.height);
+
+      // Draw starry particles
+      bgStars.forEach(star => {
+        star.alpha += star.speed;
+        if (star.alpha > 1 || star.alpha < 0.2) star.speed = -star.speed;
+
+        bgCtx.save();
+        bgCtx.globalAlpha = Math.abs(star.alpha);
+        bgCtx.fillStyle = star.color;
+        bgCtx.beginPath();
+        bgCtx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        bgCtx.fill();
+        bgCtx.restore();
+      });
+
+      requestAnimationFrame(renderBg);
+    }
+
+    window.addEventListener('resize', resizeBgCanvas);
+
+    // NAVIGATION FUNCTIONS
+    function enterUniverse() {
+      const welcome = document.getElementById('screen-welcome');
+      const stars = document.getElementById('screen-stars');
+
+      welcome.style.opacity = '0';
+      welcome.style.transform = 'scale(1.1)';
+
+      setTimeout(() => {
+        welcome.classList.add('hidden');
+        stars.classList.remove('hidden');
+        stars.style.opacity = '0';
+        stars.style.transform = 'scale(0.95)';
+        
+        requestAnimationFrame(() => {
+          stars.style.opacity = '1';
+          stars.style.transform = 'scale(1)';
+        });
+      }, 500);
+
+      // Play soft ambient tone on user gesture if muted
+      if (!isAudioPlaying) {
+        toggleAudio();
+      }
+    }
+
+    function openPersonalUniverse(index) {
+      currentUniverseIndex = index;
+      const data = PERSONS_DATA[index];
+
+      const stars = document.getElementById('screen-stars');
+      const personal = document.getElementById('screen-personal');
+
+      stars.style.opacity = '0';
+      
+      setTimeout(() => {
+        stars.classList.add('hidden');
+        personal.classList.remove('hidden');
+        personal.style.opacity = '0';
+        
+        // Populate Personal UI Data
+        document.getElementById('p-badge').innerText = data.badge;
+        document.getElementById('p-hero-title').innerHTML = `HAPPY BIRTHDAY, ${data.recipient} ♡`;
+        document.getElementById('p-hero-subtitle').innerText = data.heroSubtitle;
+        document.getElementById('p-theme-icon').innerText = data.themeIcon;
+        document.getElementById('p-theme-text').innerText = data.themeName;
+        document.getElementById('p-sender-name').innerText = `จาก: ${data.sender}`;
+        document.getElementById('p-surprise-title').innerText = data.surpriseTitle;
+        document.getElementById('p-surprise-hint').innerText = data.surpriseHint;
+        document.getElementById('surprise-btn-text').innerText = data.btnText;
+
+        // Reset and start typewriter effect
+        startTypewriter(data.letter);
+
+        // Initialize Interactive Canvas for this person's theme
+        initSurpriseCanvas(data.type);
+
+        requestAnimationFrame(() => {
+          personal.style.opacity = '1';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }, 500);
+    }
+
+    function backToStars() {
+      const personal = document.getElementById('screen-personal');
+      const stars = document.getElementById('screen-stars');
+
+      personal.style.opacity = '0';
+      
+      setTimeout(() => {
+        personal.classList.add('hidden');
+        stars.classList.remove('hidden');
+        
+        if (surpriseAnimationId) cancelAnimationFrame(surpriseAnimationId);
+
+        requestAnimationFrame(() => {
+          stars.style.opacity = '1';
+        });
+      }, 500);
+    }
+
+    // TYPEWRITER LETTER ENGINE
+    function startTypewriter(fullText) {
+      const container = document.getElementById('p-letter-content');
+      const status = document.getElementById('p-letter-status');
+      
+      container.innerText = "";
+      currentTypedText = fullText;
+      let charIndex = 0;
+
+      if (typewriterTimer) clearInterval(typewriterTimer);
+
+      status.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span><span>กำลังอ่านจดหมาย...</span>`;
+
+      typewriterTimer = setInterval(() => {
+        if (charIndex < fullText.length) {
+          container.innerText += fullText.charAt(charIndex);
+          charIndex++;
+        } else {
+          clearInterval(typewriterTimer);
+          status.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span><span>อ่านจดหมายเรียบร้อยแล้ว</span>`;
+        }
+      }, 45);
+    }
+
+    function skipTypewriter() {
+      if (typewriterTimer) clearInterval(typewriterTimer);
+      const container = document.getElementById('p-letter-content');
+      const status = document.getElementById('p-letter-status');
+      container.innerText = currentTypedText;
+      status.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span><span>อ่านจดหมายเรียบร้อยแล้ว</span>`;
+    }
+
+    // INTERACTIVE SURPRISE ENGINE
+    const sCanvas = document.getElementById('surprise-canvas');
+    const sCtx = sCanvas.getContext('2d');
+    let surpriseType = "";
+    let surpriseEntities = [];
+    let candleBlown = false;
+
+    function resizeSurpriseCanvas() {
+      const rect = sCanvas.parentElement.getBoundingClientRect();
+      sCanvas.width = rect.width - 32; // Account for padding
+      sCanvas.height = 360;
+    }
+
+    function initSurpriseCanvas(type) {
+      resizeSurpriseCanvas();
+      surpriseType = type;
+      surpriseEntities = [];
+      candleBlown = false;
+
+      if (surpriseAnimationId) cancelAnimationFrame(surpriseAnimationId);
+
+      if (type === 'shooting-stars') {
+        // Spawn initial shooting stars
+        for (let i = 0; i < 5; i++) addShootingStar();
+      } else if (type === 'glowing-garden') {
+        // Spawn glowing flowers
+        for (let i = 0; i < 7; i++) addGlowingFlower(Math.random() * sCanvas.width, sCanvas.height - 40 - Math.random() * 80);
+      } else if (type === 'constellation-room') {
+        // Build constellation points
+        initConstellationNodes();
+      } else if (type === 'birthday-cake') {
+        // Init cake state
+      }
+
+      runSurpriseLoop();
+    }
+
+    // Event handlers for Surprise Canvas
+    sCanvas.addEventListener('click', (e) => {
+      const rect = sCanvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      if (surpriseType === 'shooting-stars') {
+        addShootingStar(x, y);
+      } else if (surpriseType === 'glowing-garden') {
+        addGlowingFlower(x, y);
+      } else if (surpriseType === 'constellation-room') {
+        addConstellationStar(x, y);
+      } else if (surpriseType === 'birthday-cake') {
+        // Check if clicked near candles
+        if (y < sCanvas.height * 0.55) {
+          extinguishCandles();
+        }
+      }
+    });
+
+    function triggerSurpriseAction() {
+      if (surpriseType === 'shooting-stars') {
+        for (let i = 0; i < 4; i++) addShootingStar();
+      } else if (surpriseType === 'glowing-garden') {
+        for (let i = 0; i < 3; i++) addGlowingFlower(Math.random() * sCanvas.width, sCanvas.height - 50 - Math.random() * 60);
+      } else if (surpriseType === 'constellation-room') {
+        for (let i = 0; i < 4; i++) addConstellationStar(Math.random() * sCanvas.width, Math.random() * (sCanvas.height - 60));
+      } else if (surpriseType === 'birthday-cake') {
+        extinguishCandles();
+      }
+    }
+
+    /* 1. SHOOTING STARS LOGIC */
+    function addShootingStar(targetX, targetY) {
+      const startX = targetX ? targetX + 150 : Math.random() * sCanvas.width;
+      const startY = targetY ? targetY - 150 : Math.random() * (sCanvas.height / 2);
+      surpriseEntities.push({
+        x: startX,
+        y: startY,
+        length: Math.random() * 80 + 40,
+        speed: Math.random() * 8 + 6,
+        angle: Math.PI / 4,
+        alpha: 1,
+        color: '#38BDF8'
+      });
+    }
+
+    /* 2. GLOWING GARDEN LOGIC */
+    function addGlowingFlower(x, y) {
+      surpriseEntities.push({
+        x: x,
+        y: Math.min(y, sCanvas.height - 30),
+        size: 0,
+        maxSize: Math.random() * 18 + 14,
+        color: ['#34D399', '#A7F3D0', '#6EE7B7', '#F472B6'][Math.floor(Math.random() * 4)],
+        pulse: Math.random() * Math.PI,
+        petals: Math.floor(Math.random() * 3) + 5
+      });
+    }
+
+    /* 3. CONSTELLATION ROOM LOGIC */
+    function initConstellationNodes() {
+      surpriseEntities = [];
+      const nodeCount = 8;
+      for (let i = 0; i < nodeCount; i++) {
+        surpriseEntities.push({
+          x: Math.random() * (sCanvas.width - 100) + 50,
+          y: Math.random() * (sCanvas.height - 120) + 40,
+          radius: Math.random() * 4 + 3,
+          glow: Math.random() * Math.PI,
+          label: `Wish 0${i + 1}`
+        });
+      }
+    }
+
+    function addConstellationStar(x, y) {
+      surpriseEntities.push({
+        x: x || Math.random() * (sCanvas.width - 60) + 30,
+        y: y || Math.random() * (sCanvas.height - 100) + 40,
+        radius: 5,
+        glow: 0,
+        label: "✨"
+      });
+    }
+
+    /* 4. BIRTHDAY CAKE & FIREWORKS LOGIC */
+    let fireworks = [];
+    function extinguishCandles() {
+      candleBlown = true;
+      document.getElementById('surprise-btn-text').innerText = "จุดพลุฉลองเพิ่ม 🎉";
+
+      // Trigger Fireworks Burst
+      for (let i = 0; i < 60; i++) {
+        fireworks.push({
+          x: sCanvas.width / 2,
+          y: sCanvas.height * 0.45,
+          vx: (Math.random() - 0.5) * 12,
+          vy: (Math.random() - 0.8) * 10,
+          color: ['#F59E0B', '#EF4444', '#10B981', '#3B82F6', '#EC4899'][Math.floor(Math.random() * 5)],
+          alpha: 1,
+          size: Math.random() * 4 + 2
+        });
+      }
+    }
+
+    // MAIN SURPRISE ANIMATION LOOP
+    function runSurpriseLoop() {
+      sCtx.clearRect(0, 0, sCanvas.width, sCanvas.height);
+
+      if (surpriseType === 'shooting-stars') {
+        // Render Shooting Stars
+        sCtx.fillStyle = 'rgba(2, 6, 23, 0.4)';
+        sCtx.fillRect(0, 0, sCanvas.width, sCanvas.height);
+
+        surpriseEntities.forEach((s, idx) => {
+          s.x -= Math.cos(s.angle) * s.speed;
+          s.y += Math.sin(s.angle) * s.speed;
+          s.alpha -= 0.01;
+
+          sCtx.save();
+          sCtx.strokeStyle = s.color;
+          sCtx.lineWidth = 2;
+          sCtx.globalAlpha = Math.max(s.alpha, 0);
+          sCtx.beginPath();
+          sCtx.moveTo(s.x, s.y);
+          sCtx.lineTo(s.x + Math.cos(s.angle) * s.length, s.y - Math.sin(s.angle) * s.length);
+          sCtx.stroke();
+          sCtx.restore();
+
+          if (s.alpha <= 0 || s.x < 0 || s.y > sCanvas.height) {
+            surpriseEntities.splice(idx, 1);
+          }
+        });
+
+      } else if (surpriseType === 'glowing-garden') {
+        // Render Glowing Garden
+        sCtx.fillStyle = '#051A14';
+        sCtx.fillRect(0, 0, sCanvas.width, sCanvas.height);
+
+        // Ground line
+        sCtx.strokeStyle = '#065F46';
+        sCtx.lineWidth = 3;
+        sCtx.beginPath();
+        sCtx.moveTo(0, sCanvas.height - 20);
+        sCtx.lineTo(sCanvas.width, sCanvas.height - 20);
+        sCtx.stroke();
+
+        surpriseEntities.forEach(f => {
+          if (f.size < f.maxSize) f.size += 0.4;
+          f.pulse += 0.03;
+          const glow = Math.sin(f.pulse) * 5 + 15;
+
+          // Stem
+          sCtx.strokeStyle = '#047857';
+          sCtx.lineWidth = 2;
+          sCtx.beginPath();
+          sCtx.moveTo(f.x, sCanvas.height - 20);
+          sCtx.quadraticCurveTo(f.x + 5, sCanvas.height - 40, f.x, f.y);
+          sCtx.stroke();
+
+          // Flower Petals
+          sCtx.save();
+          sCtx.shadowColor = f.color;
+          sCtx.shadowBlur = glow;
+          sCtx.fillStyle = f.color;
+
+          for (let i = 0; i < f.petals; i++) {
+            const angle = (i * 2 * Math.PI) / f.petals;
+            const px = f.x + Math.cos(angle) * (f.size * 0.8);
+            const py = f.y + Math.sin(angle) * (f.size * 0.8);
+            sCtx.beginPath();
+            sCtx.arc(px, py, f.size * 0.4, 0, Math.PI * 2);
+            sCtx.fill();
+          }
+
+          // Center
+          sCtx.fillStyle = '#FEF08A';
+          sCtx.beginPath();
+          sCtx.arc(f.x, f.y, f.size * 0.3, 0, Math.PI * 2);
+          sCtx.fill();
+          sCtx.restore();
+        });
+
+      } else if (surpriseType === 'constellation-room') {
+        // Render Constellations
+        sCtx.fillStyle = '#0F0728';
+        sCtx.fillRect(0, 0, sCanvas.width, sCanvas.height);
+
+        // Draw Connecting Constellation Lines
+        sCtx.strokeStyle = 'rgba(192, 132, 252, 0.3)';
+        sCtx.lineWidth = 1;
+        sCtx.beginPath();
+        for (let i = 0; i < surpriseEntities.length; i++) {
+          const node = surpriseEntities[i];
+          if (i === 0) sCtx.moveTo(node.x, node.y);
+          else sCtx.lineTo(node.x, node.y);
+        }
+        sCtx.stroke();
+
+        // Draw Star Nodes
+        surpriseEntities.forEach(node => {
+          node.glow += 0.04;
+          const currentRadius = node.radius + Math.sin(node.glow) * 1.5;
+
+          sCtx.save();
+          sCtx.shadowColor = '#C084FC';
+          sCtx.shadowBlur = 15;
+          sCtx.fillStyle = '#E9D5FF';
+          sCtx.beginPath();
+          sCtx.arc(node.x, node.y, currentRadius, 0, Math.PI * 2);
+          sCtx.fill();
+
+          sCtx.fillStyle = 'rgba(233, 213, 255, 0.7)';
+          sCtx.font = '10px Prompt';
+          sCtx.fillText(node.label, node.x + 8, node.y + 3);
+          sCtx.restore();
+        });
+
+      } else if (surpriseType === 'birthday-cake') {
+        // Render Cake Canvas Art
+        sCtx.fillStyle = '#111827';
+        sCtx.fillRect(0, 0, sCanvas.width, sCanvas.height);
+
+        const cx = sCanvas.width / 2;
+        const cy = sCanvas.height * 0.65;
+
+        // Cake Base Stand
+        sCtx.fillStyle = '#374151';
+        sCtx.beginPath();
+        sCtx.ellipse(cx, cy + 40, 110, 25, 0, 0, Math.PI * 2);
+        sCtx.fill();
+
+        // Layer 1 (Bottom Cake Layer)
+        sCtx.fillStyle = '#7C2D12';
+        sCtx.fillRect(cx - 80, cy - 20, 160, 50);
+        sCtx.fillStyle = '#F59E0B';
+        sCtx.fillRect(cx - 80, cy - 5, 160, 8);
+
+        // Layer 2 (Top Layer)
+        sCtx.fillStyle = '#9A3412';
+        sCtx.fillRect(cx - 60, cy - 60, 120, 45);
+        sCtx.fillStyle = '#FEF3C7';
+        sCtx.fillRect(cx - 60, cy - 45, 120, 6);
+
+        // Candles & Flames
+        const candlePositions = [-35, -12, 12, 35];
+        candlePositions.forEach(offset => {
+          const candX = cx + offset;
+          const candY = cy - 60;
+
+          // Candle Stick
+          sCtx.fillStyle = '#E0E7FF';
+          sCtx.fillRect(candX - 3, candY - 25, 6, 25);
+
+          // Candle Wick & Flame
+          if (!candleBlown) {
+            const flameGlow = Math.sin(Date.now() * 0.01 + offset) * 2;
+            sCtx.save();
+            sCtx.shadowColor = '#F59E0B';
+            sCtx.shadowBlur = 12 + flameGlow;
+            sCtx.fillStyle = '#F97316';
+            sCtx.beginPath();
+            sCtx.arc(candX, candY - 30, 5 + flameGlow * 0.5, 0, Math.PI * 2);
+            sCtx.fill();
+
+            sCtx.fillStyle = '#FEF08A';
+            sCtx.beginPath();
+            sCtx.arc(candX, candY - 30, 2.5, 0, Math.PI * 2);
+            sCtx.fill();
+            sCtx.restore();
+          } else {
+            // Extinguished Smoke
+            sCtx.fillStyle = 'rgba(156, 163, 175, 0.4)';
+            sCtx.beginPath();
+            sCtx.arc(candX + Math.sin(Date.now() * 0.005) * 4, candY - 32, 3, 0, Math.PI * 2);
+            sCtx.fill();
+          }
+        });
+
+        // Render Fireworks Particles if active
+        fireworks.forEach((fw, idx) => {
+          fw.x += fw.vx;
+          fw.y += fw.vy;
+          fw.vy += 0.15; // Gravity
+          fw.alpha -= 0.015;
+
+          sCtx.save();
+          sCtx.globalAlpha = Math.max(fw.alpha, 0);
+          sCtx.fillStyle = fw.color;
+          sCtx.beginPath();
+          sCtx.arc(fw.x, fw.y, fw.size, 0, Math.PI * 2);
+          sCtx.fill();
+          sCtx.restore();
+
+          if (fw.alpha <= 0) fireworks.splice(idx, 1);
+        });
+
+        if (candleBlown) {
+          sCtx.fillStyle = '#F59E0B';
+          sCtx.font = '600 16px Prompt';
+          sCtx.textAlign = 'center';
+          sCtx.fillText("HAPPY BIRTHDAY พี่จ้าย! 🥳🎉", cx, cy - 100);
+        }
+      }
+
+      surpriseAnimationId = requestAnimationFrame(runSurpriseLoop);
+    }
+
+    // AUDIO SYNTHESIZER (WEB AUDIO API PROCEDURAL BGM)
+    function toggleAudio() {
+      const btnLabel = document.getElementById('audio-label');
+      
+      if (!isAudioPlaying) {
+        if (!audioSynthCtx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          audioSynthCtx = new AudioContext();
+        }
+
+        if (audioSynthCtx.state === 'suspended') {
+          audioSynthCtx.resume();
+        }
+
+        playAmbientChords();
+        isAudioPlaying = true;
+        btnLabel.innerText = "ปิดเพลงบรรยากาศ";
+      } else {
+        if (audioSynthCtx) audioSynthCtx.suspend();
+        isAudioPlaying = false;
+        btnLabel.innerText = "เล่นเพลงบรรยากาศ";
+      }
+    }
+
+    function playAmbientChords() {
+      if (!audioSynthCtx || audioSynthCtx.state !== 'running') return;
+
+      const notes = [261.63, 329.63, 392.00, 493.88, 523.25]; // C Major 7 chord notes
+      const now = audioSynthCtx.currentTime;
+
+      notes.forEach((freq, idx) => {
+        const osc = audioSynthCtx.createOscillator();
+        const gain = audioSynthCtx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+
+        gain.gain.setValueAtTime(0.01, now);
+        gain.gain.linearRampToValueAtTime(0.04, now + 2);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 6);
+
+        osc.connect(gain);
+        gain.connect(audioSynthCtx.destination);
+
+        osc.start(now + idx * 0.4);
+        osc.stop(now + 7);
+      });
+
+      // Loop ambient chord progression every 7 seconds
+      setTimeout(() => {
+        if (isAudioPlaying) playAmbientChords();
+      }, 6500);
+    }
+
+    // INITIALIZATION ON LOAD
+    window.onload = function() {
+      resizeBgCanvas();
+      renderBg();
+      lucide.createIcons();
+    };
+  </script>
+</body>
+</html>
